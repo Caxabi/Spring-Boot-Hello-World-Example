@@ -71,32 +71,8 @@
 							<goal>report</goal>
 						</goals>
 					</execution>
-					<execution>
-					      <id>coverage-check</id>
-					      <goals>
-						<goal>check</goal>
-					      </goals>
-					      <configuration>
-						<rules>
-						  <rule>
-						    <element>CLASS</element>
-						    <excludes>
-						      <exclude>StandardAssertionsTest.java</exclude>
-						    </excludes>
-						    <limits>
-						      <limit>
-							<counter>LINE</counter>
-							<value>COVEREDRATIO</value>
-							<minimum>80%</minimum>
-						      </limit>
-						    </limits>
-						  </rule>
-						</rules>
-					      </configuration>
-					</execution>
 				</executions>
 			</plugin>
 		</plugins>
 	</build>
-	
 </project>
