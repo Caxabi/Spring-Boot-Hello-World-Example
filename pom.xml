@@ -81,7 +81,7 @@
 						  <rule>
 						    <element>CLASS</element>
 						    <excludes>
-						      <exclude>com.asimio.demo.Application</exclude>
+						      <exclude>StandardAssertionsTest.java</exclude>
 						    </excludes>
 						    <limits>
 						      <limit>
