@@ -1,19 +1,15 @@
 pipeline {
     agent any
-    
     tools {
         maven 'Maven'
     }
-    
     stages {
-        
-        stage('Checkout') {
+      stage('Checkout') {
             steps {
                 echo "-=- Checkout project -=-"
                 git url: 'https://github.com/Caxabi/Spring-Boot-Hello-World-Example.git'
             }
         }
-        
         stage('Package') {
             steps {
                 echo "-=- packaging project -=-"
@@ -21,8 +17,6 @@ pipeline {
             }
             
         }
-
-
         stage('Test') {
             steps {
                 echo "-=- Test project -=-"
@@ -57,7 +51,7 @@ pipeline {
             }
           }
         }	
-		stage('Quality Analysis Sonarqube') {
+	stage('Quality Analysis Sonarqube') {
             environment {
                 SCANNER_HOME = tool 'SonarQube'
                 ORGANIZATION = "EQL"
@@ -74,7 +68,7 @@ pipeline {
                 }
             }
         }
-		stage('Continuous delivery') {
+	stage('Continuous delivery') {
           steps {
              script {
               sshPublisher(
@@ -124,6 +118,17 @@ pipeline {
                ])
              }
           }
+        }
+	stage('Checkout Selenium') {
+            steps {
+                echo "-=- Checkout project -=-"
+                git url: 'https://github.com/Caxabi/example-springboot-automation-test-selenium.git'
+            }
+        }
+        stage('Selenium Test Job') {
+            steps {
+                 build job: 'Projet_tests_selenium' 
+            }
         }
     }
 }
